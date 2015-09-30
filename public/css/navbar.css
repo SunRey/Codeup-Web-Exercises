@@ -1,0 +1,35 @@
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	float: left;
+}
+
+button li {
+	display: block;
+	width: 90px;
+}
+
+button:link {
+	text-decoration: none;
+}
+
+button:visited {
+	color: blue;
+}
+
+button:active {
+	color: transparent;
+}
+
+button:hover {
+	background-color: red;
+	border-radius: 10px;
+}
+
+h1 {
+	clear: both;
+}

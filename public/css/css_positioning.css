@@ -1,0 +1,52 @@
+.vsw {
+	margin-bottom: 0px;
+}
+
+.top-row {
+	float: left;
+}
+.bottom-row {
+	clear: both;
+}
+
+.img-container {
+	background: url(../img/codeup-arrow.png) no-repeat;
+	background-position: 88% 12%;
+	width: 148px;
+	height: 148px;
+	float: left;
+}
+
+.color-box {
+	border: 1px solid black;
+	padding: 12px;
+	width: 72px;
+	height: 72px;
+	font-weight: bold;
+	color: white;
+	position: absolute;
+	margin-top: 50px;
+}
+
+.red {
+	background-color: red;
+}
+.orange {
+	background-color: orange;
+}
+
+.yellow {
+	background-color: yellow;
+}
+
+.green {
+	background-color: green;
+}
+
+.blue {
+	background-color: blue;
+}
+
+.purple {
+	background-color: purple;
+}

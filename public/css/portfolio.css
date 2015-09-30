@@ -1,0 +1,15 @@
+body {
+	background-color: #5a5a5a;
+}
+
+.navbar-wrapper {
+	margin-top: 20px;
+}
+
+.rounded {
+	border-radius: 15px;
+}
+
+.jumbotron {
+	border-radius: 25px;
+}

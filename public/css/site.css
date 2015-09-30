@@ -1,0 +1,76 @@
+body {
+	background: rgba(140,22,100,0.5);
+}
+
+div.wrapper {
+	border-radius: 10px;
+	border-style: groove;
+	border-color: yellow;
+}
+
+main {
+	padding: 25px;
+	float: left;
+}
+
+h1, h3, h5 {
+	color: #00ffff;
+}
+
+h2, h4, h6 {
+	color: #00CED1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Helvetica;
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+	font-family: Times;
+	text-decoration: underline;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link {
+	color: #ffd700;
+}
+
+a:visited{
+	color: black;
+}
+
+a:hover {
+	color: salmon;
+}
+
+a:active {
+	color: red;
+}
+
+.hex {
+	border-top: 30px;
+}
+
+table {
+	border-top: 10px;
+	position: clearfix;
+}
+
+th.title {
+	font-weight: bold;
+}
+
+th.heads {
+	font-style: oblique;
+}
+
+td {
+	border: 2px dotted;
+}
+
+nav {
+	position: center;
+}
