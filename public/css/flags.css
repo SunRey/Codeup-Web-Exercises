@@ -254,7 +254,16 @@
          -o-transform: rotate(60deg);
 }
 
-/*.yinyang {
+/*.reset-box-sizing,
+.reset-box-sizing *,
+.reset-box-sizing *:before,
+.reset-box-sizing *:after {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+.yinyang {
  width: 100px; height: 50px;
  background: red;
  border-color: blue;

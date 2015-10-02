@@ -1,5 +1,5 @@
 body {
-	background-color: #5a5a5a;
+	background-color: #223;
 }
 
 .navbar-wrapper {
@@ -12,4 +12,12 @@ body {
 
 .jumbotron {
 	border-radius: 25px;
+}
+
+.marge-simpson {
+
+}
+
+#pyramid {
+	border-radius: 100%;
 }
