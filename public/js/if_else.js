@@ -8,8 +8,8 @@ var favorite = 'green'; // TODO: change this to your favorite color from the lis
 
 if (color == 'red'|| color == 'orange' || color == 'yellow' || color == 'green' || color == 'blue' || color == 'black' || 
 	color == 'gray' || color == 'brown' || color == 'tan') {
-	var indexResponse = colors.indexOf(color);
-	var workAround = console.log( "The color " + color + ' reminds me of ' + response[indexResponse] + '.');
+	var indexResponse = colors.indexOf(color),
+	workAround = console.log( "The color " + color + ' reminds me of ' + response[indexResponse] + '.');
 } 
 else {
 	console.log('I do not know anything by that color.');
@@ -25,5 +25,8 @@ else {
 //       says whether the random color matches your favorite color.
 console.log((favorite==color) ? "matches my favorite color" : 'does not match ma FAV color');
 
-
+var indexResponse = colors.indexOf(color),
+workAround = "The color " + color + ' reminds me of ' + response[indexResponse] + '.',
+message = (color == 'violet' || color == 'indigo') ? 'I do not know anything by that color.' : workAround;
+console.log(message);
 

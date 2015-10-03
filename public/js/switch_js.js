@@ -1,10 +1,10 @@
 // ignore these lines for now
 // just know that the variable 'color' will end up with a random value from the colors array
-var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-var color = colors[Math.floor(Math.random()*colors.length)];
-var response = ['blood', 'fruit', 'lemons', 'limes', 'the sky', '\'', '\'', 'my humor', 'an artist', 'coffee', 'sand'];
-var indexResponse = colors.indexOf(color);
-var workAround = "The color " + color + ' reminds me of ' + response[indexResponse] + '.';
+var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+color = colors[Math.floor(Math.random()*colors.length)],
+response = ['blood', 'fruit', 'lemons', 'limes', 'the sky', '\'', '\'', 'my humor', 'an artist', 'coffee', 'sand'],
+indexResponse = colors.indexOf(color),
+workAround = "The color " + color + ' reminds me of ' + response[indexResponse] + '.';
 
 
 switch (color) {
