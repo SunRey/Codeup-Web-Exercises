@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+		for (var j = 9; j <= 10; j++) {
+			for (var i = 0; i <= 10; i++){
+				console.log(i + ' x ' + j + ' = ' + (i * j));
+			}
+		}
+
+		/*         */
+		
+		var beer = 99, bottlesOf = ' bottles of beer', onTheWall = ' on the wall', passItAround = 'Take one down & pass it around, ';
+		while (beer >= 3) {
+			console.log(beer + bottlesOf + onTheWall + ', ' + beer + bottlesOf + '. ' + passItAround + (beer-1) + bottlesOf + onTheWall + '.');
+			beer--;
+
+			if (beer === 2) {
+				var noMore = 'No more', oneBottle = ' bottle of beer';
+				console.log(beer + bottlesOf + onTheWall + ', ' + beer + bottlesOf + '. ' + passItAround + (beer-1) + oneBottle + onTheWall + '.');
+				beer--;
+				console.log(beer + oneBottle + onTheWall + ', ' + beer + oneBottle + '. ' + passItAround + noMore + bottlesOf + '.');
+				console.log(noMore + bottlesOf + onTheWall + ', ' + noMore + bottlesOf + '. ' + 'Go to the store and buy some more, 99' + bottlesOf + onTheWall + '.');
+			}
+		}
+		
+	</script>
+</body>
+</html>
