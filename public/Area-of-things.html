@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+		function ofCircle(radius) {
+			return 2 * Math.PI * radius;
+		}
+
+		function ofTrapezoid (topL, botL, height) {
+			return ((.5*height)*(topL+botL));
+		}
+
+		function longTrap (tri, rect) {
+			return rect - tri;
+		}
+
+		function pythag (side1, side2) {
+			return Math.sqrt(Math.pow(side1, 2) + Math.pow(side2, 2));
+		}
+
+		/*                             */
+
+		function ofTriangle(side1, side2) {
+			return (side1*side2)/2;
+		}
+
+		function ofRectangle (l, w) {
+			return l * w;
+		}
+
+		function exercise (l, w, triangleSide) {
+			var rectangle = ofRectangle(l, w);
+			var triangle = ofTriangle(w, triangleSide);
+			return rectangle - triangle;
+		}
+
+		var answer = exercise(15, 8, 9);
+		console.log(answer);
+
+	</script>
+</body>
+</html>
