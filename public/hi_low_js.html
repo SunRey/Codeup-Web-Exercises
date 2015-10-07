@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<button onclick="guessingGame()">Play it again, I say!</button>
+	<script>
+	
+	(confirm('Would you like to play a game?')) ? guessingGame() : alert('For that I alert you!');
+	
+	function compare(user, computer) {
+		user = Number(user);
+		return (user > computer) ? 'too high.' : 'too low.';
+	}
+
+	function guessingGame() {
+		var randomNumber = Math.floor((Math.random()*100)+1);
+		console.log(randomNumber);
+		var userGuess = prompt('Guess your future number....');
+		userGuess = Number(userGuess);
+		
+		do {
+			if (userGuess !== randomNumber) {
+				var message = compare(userGuess, randomNumber);
+				userGuess = prompt('Guess Again. You were ' + message);
+				userGuess = Number(userGuess);
+			}
+		} while (userGuess !== randomNumber);
+	}
+
+
+	// function compare(userGuess, random){
+	// 	if (userGuess === random){
+	// 		return true;
+	// 	}
+	// 	else {
+	// 		return (userGuess > random) ? 'Too high' : 'Too low';
+	// 	}
+	// }
+
+	// do {
+	// 	var thisPick = randomNumber;
+	// 	var userGuess = prompt('Guess me');
+	// 	var keepPlaying = true;
+	// 	if (thisPick !== userGuess) {
+
+	// 	}
+
+
+	// } while (!keepPlaying);
+
+
+	</script>
+</body>
+</html>
