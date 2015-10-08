@@ -7,13 +7,15 @@
 <body>
 
 	<script type="text/javascript">
-		var name = ['James', 'Zondra', 'Cassidy', 'Horace'],
-			nameIndex = name.length;
+		var names = ['James', 'Zondra', 'Cassidy', 'Horace'],
+			namesIndex = names.length;
+		console.log(namesIndex);
+		console.log(names);
+		
+		names.forEach(function (name, index, array) {
+			console.log('Say "HI" to ' + name + ' who stays at index ' + index);
+		});
 
-		console.log(nameIndex);
-		for(var i = 0; i >= nameIndex-1; i++) {
-			console.log(name[i]);
-		}
 
 
 
