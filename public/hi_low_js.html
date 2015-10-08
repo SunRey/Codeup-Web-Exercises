@@ -3,53 +3,88 @@
 <html>
 <head>
 	<title></title>
+	<style type="text/css">
+		div {
+			position: relative;
+		}
+		button {
+			margin-top: 10%;
+			margin-left: 40%;
+			color: lawngreen;
+			background: black;
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
-	<button onclick="guessingGame()">Play it again, I say!</button>
+	<div id="center">
+		<button onclick="theGame()">Play the game, the first one is always free...</button>
+	</div>
 	<script>
-	
-	(confirm('Would you like to play a game?')) ? guessingGame() : alert('For that I alert you!');
-	
-	function compare(user, computer) {
-		user = Number(user);
-		return (user > computer) ? 'too high.' : 'too low.';
-	}
 
-	function guessingGame() {
-		var randomNumber = Math.floor((Math.random()*100)+1);
-		console.log(randomNumber);
-		var userGuess = prompt('Guess your future number....');
-		userGuess = Number(userGuess);
-		
-		do {
-			if (userGuess !== randomNumber) {
-				var message = compare(userGuess, randomNumber);
-				userGuess = prompt('Guess Again. You were ' + message);
-				userGuess = Number(userGuess);
+	var viewController = {
+
+		getUserGuess: function () { return prompt('Guess your future number, from 1 - 100'); },
+
+		notNumberGuess: function () { return prompt('Wrong format, choose a number (1 - 100) using DIGITS mostly'); },
+
+		wrongGuessAlert: function (compareResult) { alert(compareResult); },
+
+		gotItRight: function () { alert('Hey you "actually" did it!'); },
+
+		playMore: function () { return confirm('Would you like to play again? Say "OK" or "Cancel" OR press enter'); },
+
+		randomizer: function () { return Math.floor((Math.random()*100)+1); },
+
+		validatedGuess: function (userGuess) {return Number.parseInt(userGuess); },
+
+		compareResult: function (user, random) {
+			return (user > random) ? 'You\'re too high, panama red' : 'Swing low, sweet chariot';
+		},
+
+		playAgain: function() {
+			if (viewController.playMore()) { 
+				return theGame(); 
 			}
-		} while (userGuess !== randomNumber);
-	}
+		}
+	};
 
+	var theGame = function dataManager() {
+		var randomNumber, userGuess;
 
-	// function compare(userGuess, random){
-	// 	if (userGuess === random){
-	// 		return true;
-	// 	}
-	// 	else {
-	// 		return (userGuess > random) ? 'Too high' : 'Too low';
-	// 	}
-	// }
+		function comeBackWhenYouHaveAnAnswer () {
+			userGuess = viewController.getUserGuess();
+			userGuess = viewController.validatedGuess(userGuess);
+			if (isNaN(userGuess)) {
+				do {
+					userGuess = viewController.notNumberGuess();
+					userGuess = viewController.validatedGuess(userGuess);
+				} while (isNaN(userGuess));
+			}
 
-	// do {
-	// 	var thisPick = randomNumber;
-	// 	var userGuess = prompt('Guess me');
-	// 	var keepPlaying = true;
-	// 	if (thisPick !== userGuess) {
+			return userGuess;
+		}
+		
+		function theGame() {
+			if ( randomNumber !== userGuess ) {
+				do {
+					var result = viewController.compareResult(userGuess, randomNumber);
+					viewController.wrongGuessAlert(result);
+					comeBackWhenYouHaveAnAnswer();
+				}while (randomNumber !== userGuess)
+			}
+			return viewController.gotItRight();
+		}
 
-	// 	}
+		randomNumber = viewController.randomizer();
+		console.log(randomNumber);
 
+		userGuess = comeBackWhenYouHaveAnAnswer();
 
-	// } while (!keepPlaying);
+		theGame();
+
+		viewController.playAgain();
+	};
 
 
 	</script>
