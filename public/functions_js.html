@@ -7,23 +7,24 @@
 <body>
 
 	<script>
-		var myNameIs = 'Bob'; // todo: Fill in your name here.
 
-		function sayHello(fname) {
+		function sayHello() {
+			var fname = prompt('Who is you foo?')
 			console.log('Hello ' + fname);
 		}
-		sayHello(myNameIs);
+		sayHello();
 		
 
 
+		function random () {
+			return Math.floor((Math.random()*100)+1);
+		}
 
-		var random = Math.floor((Math.random()*100)+1);
-		
 		function isOdd(number) {
 			console.log((number % 2 !== 0) ? 'Is Odd' : 'Not odd enough');
 		}
 	
-		isOdd(random);
+		isOdd(random());
 
 	</script>
 </body>
