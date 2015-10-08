@@ -24,29 +24,25 @@
 
 	var viewController = {
 
-		getUserGuess: function () { return prompt('Guess your future number, from 1 - 100'); },
-
-		notNumberGuess: function () { return prompt('Wrong format, choose a number (1 - 100) using DIGITS mostly'); },
-
-		wrongGuessAlert: function (compareResult) { alert(compareResult); },
-
-		gotItRight: function () { alert('Hey you "actually" did it!'); },
-
-		playMore: function () { return confirm('Would you like to play again? Say "OK" or "Cancel" OR press enter'); },
-
-		randomizer: function () { return Math.floor((Math.random()*100)+1); },
-
-		validatedGuess: function (userGuess) {return Number.parseInt(userGuess); },
-
+		getUserGuess: function () { 
+			return prompt('Guess your future number, from 1 - 100'); },
+		randomizer: function () { 
+			return Math.floor((Math.random()*100)+1); },
+		notNumberGuess: function () { 
+			return prompt('Wrong format, choose a number (1 - 100) using DIGITS mostly'); },
+		wrongGuessAlert: function (compareResult) { 
+			alert(compareResult); },
+		gotItRight: function () { 
+			alert('Hey you "actually" did it!'); },
+		playMore: function () { 
+			return confirm('Would you like to play again? Say "OK" or "Cancel" OR press enter'); },
+		validatedGuess: function (userGuess) {
+			return Number.parseInt(userGuess); },
 		compareResult: function (user, random) {
-			return (user > random) ? 'You\'re too high, panama red' : 'Swing low, sweet chariot';
-		},
-
+			return (user > random) ? 'You\'re too high, panama red' : 'Swing low, sweet chariot'; },
 		playAgain: function() {
 			if (viewController.playMore()) { 
-				return theGame(); 
-			}
-		}
+				return theGame(); } }
 	};
 
 	var theGame = function dataManager() {
@@ -55,34 +51,28 @@
 		function comeBackWhenYouHaveAnAnswer () {
 			userGuess = viewController.getUserGuess();
 			userGuess = viewController.validatedGuess(userGuess);
-			if (isNaN(userGuess)) {
-				do {
-					userGuess = viewController.notNumberGuess();
-					userGuess = viewController.validatedGuess(userGuess);
-				} while (isNaN(userGuess));
+			while (isNaN(userGuess)) {
+				userGuess = viewController.notNumberGuess();
+				userGuess = viewController.validatedGuess(userGuess);
 			}
-
 			return userGuess;
 		}
 		
 		function theGame() {
-			if ( randomNumber !== userGuess ) {
-				do {
-					var result = viewController.compareResult(userGuess, randomNumber);
-					viewController.wrongGuessAlert(result);
-					comeBackWhenYouHaveAnAnswer();
-				}while (randomNumber !== userGuess)
+			while (randomNumber !== userGuess) {
+				var result = viewController.compareResult(userGuess, randomNumber);
+				viewController.wrongGuessAlert(result);
+				comeBackWhenYouHaveAnAnswer();
 			}
 			return viewController.gotItRight();
 		}
 
+		/* Run Function Run! */
 		randomNumber = viewController.randomizer();
 		console.log(randomNumber);
 
 		userGuess = comeBackWhenYouHaveAnAnswer();
-
 		theGame();
-
 		viewController.playAgain();
 	};
 
