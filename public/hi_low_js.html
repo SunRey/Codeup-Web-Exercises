@@ -24,23 +24,33 @@
 
 	var functionController = {
 		getUserGuess: function () { 
-			return prompt('Guess your future number, from 1 - 100'); },
-		randomizer: function () { 
-			return Math.floor((Math.random()*100)+1); },
+			return prompt('Guess your future number, from 1 - 100'); 
+		},
+		randomNumberMaker: function () { 
+			return Math.floor((Math.random()*100)+1); 
+		},
 		notNumberGuess: function () { 
-			return prompt('Wrong format, choose a number (1 - 100) using DIGITS mostly'); },
-		wrongGuessAlert: function (compareResult) { 
-			alert(compareResult); },
+			return prompt('Wrong format, choose a number (1 - 100) using DIGITS mostly'); 
+		},
+		wrongGuessAlert: function (compareResult, guessCounter) { 
+			alert(compareResult + ' You have ' + guessCounter + ' turn(s) left.'); 
+		},
 		gotItRight: function () { 
 			alert('Hey you "actually" did it!'); },
-		playMore: function () { 
-			return confirm('Would you like to play again? Say "OK" or "Cancel" OR press enter'); },
+		gotItWrong: function () {
+			alert('Don\'t know how to tell you this..and I won\'t ... ... Bye Felicia'); 
+		},
+		playMoreQuestion: function () { 
+			return confirm('Would you like to play again? Say "OK" or "Cancel" OR press enter'); 
+		},
 		validatedGuess: function (userGuess) {
-			return Number.parseInt(userGuess); },
+			return Number.parseInt(userGuess); 
+		},
 		compareResult: function (user, random) {
-			return (user > random) ? 'You\'re too high, panama red' : 'Swing low, sweet chariot'; },
+			return (user > random) ? 'You\'re too high, panama red!' : 'Swing too low, sweet chariot!'; 
+		},
 		playAgain: function() {
-			if (functionController.playMore()) { 
+			if (functionController.playMoreQuestion()) { 
 				return theGame(); 
 			} 
 		}
@@ -60,19 +70,29 @@
 		}
 		
 		function theGame() {
-			while (randomNumber !== userGuess) {
-				var result = functionController.compareResult(userGuess, randomNumber);
-				functionController.wrongGuessAlert(result);
-				comeBackWhenYouHaveAnAnswer();
-			}
-			return functionController.gotItRight();
+			var guessCounter = 10;
+			do {
+				var result;
+				guessCounter--;
+				userGuess = comeBackWhenYouHaveAnAnswer();
+				result = functionController.compareResult(userGuess, randomNumber);
+
+				if (guessCounter === 0) { 
+					break; 
+				} else { 
+						functionController.wrongGuessAlert(result, guessCounter);
+				}
+
+				
+			} while (guessCounter > 0 && randomNumber !== userGuess );
+			return (randomNumber === userGuess) ? functionController.gotItRight() : functionController.gotItWrong();
 		}
 
 		/* Run Function Run! */
-		randomNumber = functionController.randomizer();
+		randomNumber = functionController.randomNumberMaker();
 		console.log(randomNumber);
 
-		userGuess = comeBackWhenYouHaveAnAnswer();
+		// userGuess = comeBackWhenYouHaveAnAnswer();
 		theGame();
 		functionController.playAgain();
 	};
