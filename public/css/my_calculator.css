@@ -1,0 +1,24 @@
+.inline {
+	margin: 0 auto;
+	width: 100%;
+}
+.calculator {
+	max-height: 450px;
+	max-width: 300px;
+	background: #000;
+}
+
+#result {
+	color: white;
+	font-size: 20px;
+}
+#operator {
+	max-width: 40px;
+}
+#rOperand, #lOperand {
+	max-width: 100px;
+}
+
+.operatorBar {
+	position: relative;
+}

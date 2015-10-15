@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>My CaCa-lator</title>
+	<meta charset='UTF-8'>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/my_calculator.css">
+
+</head>
+<body>
+	<div class="navbar-wrapper">
+		<div class="container">
+			<nav class="navbar navbar-inverse navbar-static-top rounded">
+				<p id="result"></p>
+			</nav>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="calculator">
+			<div class="btn btn-toolbar inline">
+				<input class="btn btn-default btn-md" id='rOperand' type="input" value='' autofocus/>
+				<input class="btn btn-default btn-md" id='operator' type="input" value='' />
+				<input class="btn btn-default btn-md" id='lOperand' type="input" value='' />
+			</div>
+			<div class="btn">
+				<div class="btn">
+					<a class="btn btn-default buttonNumber" href="#" role="button" data-value ='1'>1</a>
+					<a class="btn btn-default buttonNumber" href="#" role="button" data-value ='2'>2</a>
+					<a class="btn btn-default buttonNumber" href="#" role="button" data-value ='3'>3</a>
+				</div> <br>
+				<div class="btn">
+					<a class="btn btn-default buttonNumber" href="#" role="button" data-value ='4'>4</a>
+					<a class="btn btn-default buttonNumber" href="#" role="button" data-value ='5'>5</a>
+					<a class="btn btn-default buttonNumber" href="#" role="button" data-value ='6'>6</a>
+				</div><br>
+				<div class="btn">
+					<a class="btn btn-default buttonNumber" href="#" role="button" data-value ='7'>7</a>
+					<a class="btn btn-default buttonNumber" href="#" role="button" data-value ='8'>8</a>
+					<a class="btn btn-default buttonNumber" href="#" role="button" data-value ='9'>9</a>
+				</div><br>
+				<div class="btn">
+					<a class="btn btn-warning" id='refresh' href="#" role="button" data-value =''>c</a>
+					<a class="btn btn-default buttonNumber" href="#" role="button" data-value ='0'>0</a>
+					<a class="btn btn-default" id='dot' href="#" role="button" data-value ='.'>.</a>
+				</div>
+			</div>
+			<div class="btn btn-toolbar operatorBar" style= 'float: right'>
+				<a class="btn btn-primary operators" href="#" role="button" data-value ='+'>+</a>
+				<a class="btn btn-primary operators" href="#" role="button" data-value ='-'>-</a>
+				<a class="btn btn-primary operators" href="#" role="button" data-value ='*'>*</a>
+				<a class="btn btn-primary operators" href="#" role="button" data-value ='/'>/</a>
+				<a class="btn btn-primary operators" href="#" role="button" data-value ='%'>%</a>
+				<a class="btn btn-primary operators" href="#" role="button" data-value ='e'><sup>exp</sup></a>
+				<a class="btn btn-primary operators" href="#" role="button" data-value ='^'>^</a>
+				<a class="btn btn-danger" id='compare' href="#" role="submit">=</a>
+			</div>
+		</div>
+	</div>
+	<script src ='/js/my_calculator.js'></script>
+
+</body>
+</html>
+
+<!-- <input class="btn btn-default" type="submit" value="Submit"> 
