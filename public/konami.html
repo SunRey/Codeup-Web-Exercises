@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<script type="text/javascript" src='/js/jquery-1.11.3.js'></script>
+    <title>Konami Code</title>
+</head>
+<body>
+    <h1>Konami Code</h1>
+
+    <script>
+        "use strict";
+
+        $(document).ready(function(){
+        	var konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 66, 65, 13],
+        		userCode = [];
+
+        	function konamiCode () {
+       			if (konami.length === userCode.length){
+       				alert('You have added 30 lives!');
+       			}
+       		}
+
+        	$(document).keyup(function(event){ //grab document; listen for keyup event within
+        		userCode.push(event.which); //push the keycode(which) to user array
+        		(userCode[userCode.length-1] !== konami[userCode.length-1]) ? userCode = [] : konamiCode();
+        		//userCode array index doesnot equal konami array @ same index -> reset array or call function
+        	})
+
+        });
+    </script>
+</body>
+</html>
