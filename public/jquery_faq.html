@@ -40,14 +40,40 @@
 		</dd>
 	</dt>
 
-	<button id='toggles'>Invisible</button>
-	
+	<button id='toggles-facts'>Invisible</button>
+
+	<h1>Parks List</h1>
+    <h3>National Parks</h3>
+    <ul id="national-parks">
+        <li>Arches</li>
+        <li>Badlands</li>
+        <li>Carlsbad Caverns</li>
+        <li>Denali</li>
+        <li>Everglades</li>
+    </ul>
+    <h3>State Parks of Texas</h3>
+    <ul id="state-parks-texas">
+        <li>Abilene</li>
+        <li>Big Bend</li>
+        <li>Choke Canyon</li>
+        <li>Davis Mountains</li>
+        <li>Enchanted Rock</li>
+    </ul>
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('dd').addClass('invisible');
 
-			$('#toggles').click(function() {
+			$('#toggles-facts').click(function() {
 				$('dd').toggleClass('invisible');        		
+    		})
+
+    		$('ul').each(function (index) {
+    			$(this).children().first().css('font-weight', 'bold');
+    		})
+
+    		$('li').parent().click(function() {
+    			$(this).toggleClass('invisible');
     		})
 		})
 	</script>
