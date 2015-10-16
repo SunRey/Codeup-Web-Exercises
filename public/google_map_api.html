@@ -40,6 +40,13 @@
           position: kombucha,
           map: map  
         });
+        // Create a new infoWindow object with content
+        var infowindow = new google.maps.InfoWindow({
+            content: "Dis place is good."
+        });
+
+        // Open the window using our map and marker
+        infowindow.open(map, marker);
 
         // Geocode our address
         geocoder.geocode({ "address": address }, function(results, status) {
