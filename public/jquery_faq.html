@@ -40,10 +40,15 @@
 		</dd>
 	</dt>
 
+	<button id='toggles'>Invisible</button>
+	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('dd').addClass('invisible');
-			$('.invisible').toggleClass('invisible');
+
+			$('#toggles').click(function() {
+				$('dd').toggleClass('invisible');        		
+    		})
 		})
 	</script>
 </body>
