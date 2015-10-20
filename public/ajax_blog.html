@@ -9,6 +9,10 @@
         <!-- <link rel="stylesheet" href="css/main.css"> -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+        <style>
+            .list-group { display: inline-block; margin: 5px; }
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -16,6 +20,7 @@
                 <h1>The Books you will want to read <small>...the cliff notes for</small></h1>
             </div>
             <div id="posts" class='jumbotron'>
+
             </div>
         </div>
 
@@ -30,7 +35,7 @@
                     newBlogPost += '<div class="pager-header"><h2> ' + book.title + '</h2>';
                     newBlogPost += '<p class="lead">' + book.content + '</p>';
                     for(var i=0; i < book.categories.length; i++){
-                        newBlogPost += '<ul class="list-group"><li class="list-group-item list-group-item-info"> <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> &nbsp' + book.categories[i] + '</li></ul>';
+                        newBlogPost += '<ul class="list-group list-inline"><li class="list-group-item list-group-item-info"> <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> &nbsp' + book.categories[i] + '</li></ul>';
                     }
                     newBlogPost += '<footer>' + book.date + '</footer> <br>';
                     $('#posts').html(newBlogPost);

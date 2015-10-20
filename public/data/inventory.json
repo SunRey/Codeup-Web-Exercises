@@ -8,7 +8,7 @@
         "price": 20
     }, {
         "title": "Drill",
-        "quantity": 5,
+        "quantity": 15,
         "categories": [
             "tool",
             "powered"
@@ -31,7 +31,7 @@
         ],
         "price": 10
     }, {
-        "title": "Aenima",
+        "title": "&AElig;enima",
         "quantity": 46,
         "categories": [
             "third eye"
