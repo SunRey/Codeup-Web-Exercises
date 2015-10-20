@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!-- <link rel="stylesheet" href="css/main.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+    </head>
+    <body>
+        <div class="container">
+            <div class="pager-header">
+                <h1>The Books you will want to read <small>...the cliff notes for</small></h1>
+            </div>
+            <div id="posts" class='jumbotron'>
+            </div>
+        </div>
+
+        <script>
+        (function(){
+            var blogData = $.get('/data/blog.json');
+
+            function buildBlog (data) {
+                var newBlogPost = '';
+                
+                data.forEach(function(book){
+                    newBlogPost += '<div class="pager-header"><h2> ' + book.title + '</h2>';
+                    newBlogPost += '<p class="lead">' + book.content + '</p>';
+                    for(var i=0; i < book.categories.length; i++){
+                        newBlogPost += '<ul class="list-group"><li class="list-group-item list-group-item-info"> <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> &nbsp' + book.categories[i] + '</li></ul>';
+                    }
+                    newBlogPost += '<footer>' + book.date + '</footer> <br>';
+                    $('#posts').html(newBlogPost);
+                });
+            }
+
+            blogData.done(function(data) {
+                buildBlog(data);
+            });     
+        })();
+        </script>
+    </body>
+</html>
+
+<!-- <ul class="list-group">
+  <li class="list-group-item">
+    <span class="badge">14</span>
+    Cras justo odio
+  </li>
+</ul>
+<span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
