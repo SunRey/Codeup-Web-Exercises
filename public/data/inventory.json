@@ -1,6 +1,6 @@
 [
     {
-        "title": "Hammer",
+        "title": "Hammer Bankruptcy",
         "quantity": 25,
         "categories": [
             "tool"
@@ -8,7 +8,7 @@
         "price": 20
     }, {
         "title": "Drill",
-        "quantity": 15,
+        "quantity": 5,
         "categories": [
             "tool",
             "powered"
@@ -16,7 +16,7 @@
         "price": 100
     }, {
         "title": "Mower",
-        "quantity": 5,
+        "quantity": 15,
         "categories": [
             "tool",
             "gas",
@@ -34,7 +34,8 @@
         "title": "&AElig;enima",
         "quantity": 46,
         "categories": [
-            "third eye"
+            "third eye",
+            "tool"
         ],
         "price": 2
     }, {
