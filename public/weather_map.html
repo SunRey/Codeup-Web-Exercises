@@ -6,40 +6,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="/js/moment-with-locales.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <style>
-            #day1, #day2, #day3, #day4, #day5, #day6 {
-                height: 350px;
-                width: 350px;
-                border: white solid 1px;
-                border-radius: 5%;
-            }
-            .hi_low_temp {
-                text-align: center;
-            }
-            .img_center {
-                margin-left: 41%;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="/css/weather_map.css">
     </head>
+
     <body>
         <div class="container">
             <div class="hero-spacer jumbotron">
                 <div class="pager-header">
                     <h1>Here's Tom with the weather...</h1>
+                    <form id='onlyForm'>
+                        <input id ='userLocation' class="controls" type="text" placeholder="Destination" > 
+                    </form>
+                    <div id="map-canvas">
+                    </div>
                 </div>
-                <div id="weatherCast" class=''>
-                    <h2 id="city"></h2>
+                <div id="weatherCast">
+                    <h2 id="city" class="text-danger"></h2>
                     <div class="row">
                         <div class="col-md-4" id='day1'>
                         </div>
-                        <div class="col-md-4" id='day2'>
+                        <div class="col-md-4 " id='day2'>
                         </div>
                         <div class="col-md-4" id='day3'>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-4" id='day4'>
                         </div>
                         <div class="col-md-4" id='day5'>
@@ -48,45 +38,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
 
-        <script>
-            (function() {
-                function weatherCast (data) {
-                    console.log(data);
-                    $('#city').html('<strong>' + data.city.name + "</strong>, " + data.city.country);
-                    
-                    for(var i=0; i < data.list.length; i++) {
-                        var temptatures = '', dayNum = i+1;
-
-                        // console.log(Date(data.list[i].dt * 1000));
-                        console.log(moment.unix(data.list[i].dt));
-
-                        temptatures += '<h3>' + moment.unix(data.list[i].dt).format('ddd, M/D/YYYY') + '</h3>';
-                        temptatures += '<h2 class="hi_low_temp">' + Math.round(data.list[i].temp.max) + ' <sup>&#8457</sup>  / &nbsp' + Math.round(data.list[i].temp.min) + ' <sup>&#8457</sup> </h2>';
-                        temptatures += '<img class="img_center" src="http://openweathermap.org/img/w/' + data.list[i].weather[0].icon + '.png" />';
-                        temptatures += '<p class="hi_low_temp"><strong>' + data.list[i].weather[0].main + '</strong>: ' + data.list[i].weather[0].description + '<br>';
-                        temptatures += '<strong>Humidity</strong>: &nbsp' + data.list[i].humidity + '% <br>';
-                        temptatures += '<strong>Winds</strong>: &nbsp' + Math.round(data.list[i].speed) + ' mph out of the ' + degToDirection(data.list[i].deg)  + ' </p>';
-                        console.log(temptatures);
-                        $('#day' + dayNum).html(temptatures);
-                    }
-                }
-
-                function degToDirection(num) {
-                    var val = Math.floor((num / 22.5) + 0.5);
-                    var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-                    return arr[(val % 16)];
-                }
-
-                $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
-                    APPID: "854b752303d9ba2452c4d15a1960ba95",
-                    lon: -98.493629, 
-                    lat: 29.42412,
-                    units: 'imperial',
-                    cnt: 6
-                }).done(weatherCast);
-            })();
-        </script>
+        <script src="/js/moment.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL5tLBkf8kiQvM5CUYbcmff4VD8PWrIds"></script>
+        <script src='/js/weather_map.js'></script>
     </body>
 </html>
