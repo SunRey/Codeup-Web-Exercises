@@ -1,13 +1,13 @@
 <?php
     fwrite(STDOUT, 'Please enter a starting numeric value ');
     $startValue = trim(fgets(STDIN));
-    var_dump($startValue);
     fwrite(STDOUT, 'Please enter a ending numeric value ');
     $endValue = trim(fgets(STDIN));
-    var_dump($endValue);
+    fwrite(STDOUT, 'Please enter a numeric increment value');
+    $increment = trim(fgets(STDIN));
 
 
-    for ($i = $startValue ; $i <= $endValue ; $i++) {
+    for ($i = $startValue ; $i <= $endValue ; $i += $increment) {
         if ($i % 3 == 0 && $i % 5 == 0) {
             echo "FizzBuzz\n";
         } else if ($i % 3 == 0) {
