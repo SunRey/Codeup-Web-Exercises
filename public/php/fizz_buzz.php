@@ -1,10 +1,14 @@
 <?php
-    fwrite(STDOUT, 'Please enter a starting numeric value ');
+    fwrite(STDOUT, 'Please enter a starting numeric value: ');
     $startValue = trim(fgets(STDIN));
-    fwrite(STDOUT, 'Please enter a ending numeric value ');
+    fwrite(STDOUT, 'Please enter a ending numeric value: ');
     $endValue = trim(fgets(STDIN));
-    fwrite(STDOUT, 'Please enter a numeric increment value');
+    fwrite(STDOUT, 'Please enter a numeric increment value: ');
     $increment = trim(fgets(STDIN));
+
+    if (empty($increment)) {
+        $increment = 1;
+    }
 
 
     for ($i = $startValue ; $i <= $endValue ; $i += $increment) {
