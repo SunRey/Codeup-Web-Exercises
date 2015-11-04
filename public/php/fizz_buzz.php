@@ -18,13 +18,14 @@
     } else {
         $endValue = $argv[2];
     }
+    
     if ($argc < 4) {
         fwrite(STDOUT, 'Please enter a numeric increment value: ');
         $increment = trim(fgets(STDIN));
     } else {
         $increment = $argv[3];
     }
-    
+
     if (empty($increment)) {
         $increment = 1;
     }
