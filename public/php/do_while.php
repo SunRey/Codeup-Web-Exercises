@@ -1,8 +1,9 @@
 <?php
     $twos = 2;
     $fives = 100;
+    $a = 2;
 
     do {
-        echo "$fives\n";
-        $fives -= 5;
-    } while ($fives >= -10);
+        echo "$a\n";
+        $a *= $a;
+    } while ($a <= 1000000);
