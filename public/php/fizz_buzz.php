@@ -21,11 +21,12 @@
     if ($argc < 4) {
         fwrite(STDOUT, 'Please enter a numeric increment value: ');
         $increment = trim(fgets(STDIN));
-        if (empty($increment)) {
-            $increment = 1;
-        }
     } else {
         $increment = $argv[3];
+    }
+    
+    if (empty($increment)) {
+        $increment = 1;
     }
 
 
