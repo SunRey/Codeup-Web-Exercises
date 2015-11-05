@@ -9,7 +9,7 @@
 
     switch($dayOfWeek) {
         case 1:
-            echo "Ben sez: \"it's\" Monday!\n"; // 
+            echo "Ben sez: \"it's\" Monday!\n";
             break;
         case 2:
             echo "Tuesday it is.\n";
