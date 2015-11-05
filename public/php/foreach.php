@@ -21,6 +21,7 @@
             echo "{$junk}\n";
         }
         // if (is_scalar($junk)) {
+        //     echo gettype($junk) . PHP.EOL; 
         //     echo "{$junk} is a type of scalar?\n";
         // }
     }
