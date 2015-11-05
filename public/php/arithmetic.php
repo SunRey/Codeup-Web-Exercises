@@ -20,4 +20,10 @@ function divide($a, $b)
     return $a / $b;
 }
 
-// Add code to test your functions here
+$a = mt_rand ( 1 , 100 );
+$b = mt_rand ($a, 100 );
+
+echo add($a, $b) . PHP_EOL;
+echo subtract($a, $b) . PHP_EOL;
+echo multiply($a, $b) . PHP_EOL;
+echo divide($a, $b) . PHP_EOL;
