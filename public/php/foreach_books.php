@@ -22,10 +22,23 @@
             'pages' => 544
         )
     );
+
     echo PHP_EOL;
     foreach ($books as $title => $book) {
         foreach ($book as $key => $data) {
             echo "'{$title}': {$key} - {$data}\n";
         }
         echo PHP_EOL;
+    }
+
+    echo PHP_EOL;
+
+    echo "These books were published after 1950\n\n";
+    foreach ($books as $title => $book) {
+        if ($book['published'] > 1950) {
+            foreach ($book as $key => $data) {
+                echo "'{$title}': {$key} - {$data}\n";
+            }
+            echo PHP_EOL;
+        }
     }
