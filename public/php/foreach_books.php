@@ -22,3 +22,10 @@
             'pages' => 544
         )
     );
+    echo PHP_EOL;
+    foreach ($books as $title => $book) {
+        foreach ($book as $key => $data) {
+            echo "'{$title}': {$key} - {$data}\n";
+        }
+        echo PHP_EOL;
+    }
