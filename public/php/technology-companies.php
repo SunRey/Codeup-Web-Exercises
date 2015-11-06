@@ -44,3 +44,5 @@ $companies = [
         'Jean-Louis Gassée'
     ]
 ];
+
+print_r($companies);
