@@ -2,27 +2,47 @@
 
 function add($a, $b)
 {
-    return $a + $b;
+    if (is_numeric($a) && is_numeric($b)) {
+        return $a + $b;
+    } else {
+        return "ERROR: Both arguments must be numbers\n";
+    }
 }
 
 function subtract($a, $b)
 {
-    return ($a >= $b) ? ($a - $b) : ($b - $a);
+    if (is_numeric($a) && is_numeric($b)) {
+        return ($a >= $b) ? ($a - $b) : ($b - $a);
+    } else {
+        return "ERROR: Both arguments must be numbers\n";
+    }
 }
 
 function multiply($a, $b)
 {
-    return $a * $b;
+    if (is_numeric($a) && is_numeric($b)) {
+        return $a * $b;
+    } else {
+        return "ERROR: Both arguments must be numbers\n";
+    }
 }
 
 function divide($a, $b)
 {
-    return ($a >= $b) ? ($a / $b) : ($b / $a);
+    if (is_numeric($a) && is_numeric($b)) {
+        return ($a >= $b) ? ($a / $b) : ($b / $a);
+    } else {
+        return "ERROR: Both arguments must be numbers\n";
+    }
 }
 
 function modulus($a, $b)
 {
-    return ($a >= $b) ? ($a % $b) : ($b % $a);
+    if (is_numeric($a) && is_numeric($b)) {
+        return ($a >= $b) ? ($a % $b) : ($b % $a);
+    } else {
+        return "ERROR: Both arguments must be numbers\n";
+    }
 }
 
 $a = mt_rand ( 1 , 100 );
