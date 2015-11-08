@@ -12,7 +12,7 @@ function searchArray ($name, $array) {
     }
 }
 
-function compareArray($arr1, $arr2) {
+function compareArray ($arr1, $arr2) {
     $i = 0;
     $match = 0;
     foreach ($arr1 as $name) {
@@ -24,7 +24,25 @@ function compareArray($arr1, $arr2) {
     return $match;
 }
 
-echo "\t" . searchArray('Tina', $names);
+function combine_arrays ($arr1, $arr2) {
+    $merged_array = array();
+    for($i = 0; $i < count($arr1); $i++){
+    //set $i counter to access each index in arrays
+        if ($arr1[$i] !== $arr2[$i]) {
+            //if names at the same index are not the same push name from 1st array then 2nd array
+            array_push($merged_array, $arr1[$i], $arr2[$i]);
+        } else {
+            //if names at same index are the same only push one instance of the name
+            array_push($merged_array, $arr1[$i]);
+        }
+    }
+    return $merged_array;
+}
+
+print_r(combine_arrays($names, $compare));
+/*echo "\t" . searchArray('Tina', $names);
 echo "\t" . searchArray('Bob', $names);
 echo '--__-_-_--  --__-_-__-- ' . PHP_EOL;
 echo "\t   " . compareArray($names, $compare) . PHP_EOL;
+echo '--__-_-_--  --__-_-__-- ' . PHP_EOL;*/
+// print_r($new_array);
