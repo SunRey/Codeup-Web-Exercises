@@ -2,7 +2,7 @@
 
 $names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam'];
 
-$compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael'];
+$compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael', 'Tina'];
 
 function searchArray ($name, $array) {
     if (array_search($name, $array) !== false) {
@@ -52,6 +52,12 @@ function combine_array2 ($arr1, $arr2) {
         }
         //increment $i counter forEach pass of arr1
         $i++;
+    }
+    if ($i < count($arr2)) {
+        $arr = array_slice($arr2, $i);
+        foreach ($arr as $names) {
+            array_push($merged_array, $names);
+        }
     }
     return $merged_array;
 }
