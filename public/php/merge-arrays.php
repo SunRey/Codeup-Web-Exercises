@@ -51,7 +51,6 @@ function combine_array2 ($arr1, $arr2) {
             array_push($merged_array, $name, $arr2[$i]);
         }
         //increment $i counter forEach pass of arr1
-        $i++;
     }
     // if ($i < count($arr2)) {
     //     $arr = array_slice($arr2, $i);
