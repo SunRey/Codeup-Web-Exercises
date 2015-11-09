@@ -39,7 +39,24 @@ function combine_arrays ($arr1, $arr2) {
     return $merged_array;
 }
 
-print_r(combine_arrays($names, $compare));
+function combine_array2 ($arr1, $arr2) {
+    $merged_array = [];
+    foreach($arr1 as $i => $name) {
+    // go through each name in arr1
+        if (array_search($name, $arr2) !== false) {
+        //if the name is found in arr2 push name only 1 time to merged array
+            array_push($merged_array, $name);
+        } else {
+        //elseif not found, push name and name from 2nd array at the same index
+            array_push($merged_array, $name, $arr2[$i]);
+        }
+        //increment $i counter forEach pass of arr1
+        $i++;
+    }
+    return $merged_array;
+}
+
+print_r(combine_array2($names, $compare));
 /*echo "\t" . searchArray('Tina', $names);
 echo "\t" . searchArray('Bob', $names);
 echo '--__-_-_--  --__-_-__-- ' . PHP_EOL;
