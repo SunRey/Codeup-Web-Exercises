@@ -13,18 +13,17 @@ function searchArray ($name, $array) {
 }
 
 function compareArray($arr1, $arr2) {
-    $i = 0;
     $match = 0;
     foreach ($arr1 as $name) {
         if(array_search($name, $arr2) !== false) {
             $match++;
         }
-        $i++;
     }
     return $match;
 }
 
-echo "\t" . searchArray('Tina', $names);
-echo "\t" . searchArray('Bob', $names);
-echo '--__-_-_--  --__-_-__-- ' . PHP_EOL;
-echo "\t   " . compareArray($names, $compare) . PHP_EOL;
+echo "\t  " . searchArray('Tina', $names);
+echo "\t   " . searchArray('Bob', $names);
+echo "--__-_-_--\t--__-_-__--" . PHP_EOL;
+echo "\t    " . compareArray($names, $compare) . PHP_EOL;
+print_r( array_intersect($names, $compare)) . PHP_EOL;

@@ -1,6 +1,6 @@
 <?php
 
-$names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam'];
+$names = ['Tina', 'Dana', 'Mike', 'Amy', 'Adam', 'Tina'];
 
 $compare = ['Tina', 'Dean', 'Mel', 'Amy', 'Michael', 'Tina'];
 
@@ -42,7 +42,7 @@ function combine_arrays ($arr1, $arr2) {
 function combine_array2 ($arr1, $arr2) {
     $merged_array = [];
     foreach($arr1 as $i => $name) {
-    // go through each name in arr1
+    // go through each name in arr1 and look in arr2 for match
         if (array_search($name, $arr2) !== false) {
         //if the name is found in arr2 push name only 1 time to merged array
             array_push($merged_array, $name);
@@ -53,16 +53,16 @@ function combine_array2 ($arr1, $arr2) {
         //increment $i counter forEach pass of arr1
         $i++;
     }
-    if ($i < count($arr2)) {
-        $arr = array_slice($arr2, $i);
-        foreach ($arr as $names) {
-            array_push($merged_array, $names);
-        }
-    }
+    // if ($i < count($arr2)) {
+    //     $arr = array_slice($arr2, $i);
+    //     foreach ($arr as $names) {
+    //         array_push($merged_array, $names);
+    //     }
+    // }
     return $merged_array;
 }
 
-print_r(combine_array2($names, $compare));
+print_r(combine_arrays($names, $compare));
 /*echo "\t" . searchArray('Tina', $names);
 echo "\t" . searchArray('Bob', $names);
 echo '--__-_-_--  --__-_-__-- ' . PHP_EOL;
