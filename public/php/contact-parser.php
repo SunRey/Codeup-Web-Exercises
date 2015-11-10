@@ -5,13 +5,19 @@ function parseContacts($filename)
     $contacts = array();
 
     $resource = fopen($filename, 'r');
-    $contents = fread($resource, filesize($filename));
+    $stuff = fread($resource, filesize($filename));
     fclose($resource);
 
-    $info_array = explode("\n", trim($contents));
+    $info_array = explode("\n", trim($stuff));
 
+    foreach ($info_array as $i => $info) {
+        $name = explode('|', $info);
+        var_dump($name);
+        $contacts[$i] = ['name' => $name[0], 'number' => $name[1]];
 
-    return $info_array;
+    }
+
+    return $contacts;
 }
 
 print_r(parseContacts('contacts.txt'));
