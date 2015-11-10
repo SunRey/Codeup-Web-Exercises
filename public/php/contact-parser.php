@@ -1,13 +1,15 @@
 <?php
 
+function format_string ($string) 
+{
+    $string = substr($string, 0, 3) . '-' . substr($string, 3, 3) . '-' . substr($string, -4);
+    return $string;
+}
+
 function parseContacts($filename)
 {
     $contacts = array();
-    function format_string ($string) {
-        $string = substr($string, 0, -7) . '-' . substr($string, 3, -4) . '-' . substr($string, -4);
-        return $string;
-    }
-    
+
     $resource = fopen($filename, 'r');
     $stuff = fread($resource, filesize($filename));
     fclose($resource);
