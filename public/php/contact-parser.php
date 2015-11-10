@@ -3,7 +3,11 @@
 function parseContacts($filename)
 {
     $contacts = array();
-
+    function format_string ($string) {
+        $string = substr($string, 0, -7) . '-' . substr($string, 3, -4) . '-' . substr($string, -4);
+        return $string;
+    }
+    
     $resource = fopen($filename, 'r');
     $stuff = fread($resource, filesize($filename));
     fclose($resource);
@@ -12,7 +16,8 @@ function parseContacts($filename)
 
     foreach ($info_array as $i => $info) {
         $name = explode('|', $info);
-        $contacts[$i] = ['name' => $name[0], 'number' => $name[1]];
+        $number = format_string($name[1]);
+        $contacts[$i] = ['name' => $name[0], 'number' => $number];
     }
 
     return $contacts;
