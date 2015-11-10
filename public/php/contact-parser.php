@@ -12,9 +12,7 @@ function parseContacts($filename)
 
     foreach ($info_array as $i => $info) {
         $name = explode('|', $info);
-        var_dump($name);
         $contacts[$i] = ['name' => $name[0], 'number' => $name[1]];
-
     }
 
     return $contacts;
