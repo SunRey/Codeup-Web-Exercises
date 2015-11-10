@@ -8,10 +8,10 @@ function parseContacts($filename)
     $contents = fread($resource, filesize($filename));
     fclose($resource);
 
-    $info_array = explode("\n", $contents);
+    $info_array = explode("\n", trim($contents));
 
 
-    return $contacts;
+    return $info_array;
 }
 
 print_r(parseContacts('contacts.txt'));
