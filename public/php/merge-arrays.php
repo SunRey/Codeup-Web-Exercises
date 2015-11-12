@@ -52,12 +52,6 @@ function combine_array2 ($arr1, $arr2) {
         }
         //increment $i counter forEach pass of arr1
     }
-    // if ($i < count($arr2)) {
-    //     $arr = array_slice($arr2, $i);
-    //     foreach ($arr as $names) {
-    //         array_push($merged_array, $names);
-    //     }
-    // }
     return $merged_array;
 }
 
