@@ -1,26 +1,40 @@
 <?php 
+
 function pageController () 
 {
-    $userName = isset($_POST['user_name']) ? htmlspecialchars(strip_tags($_POST['user_name'])) : false;
-    $password = isset($_POST['password']) ? htmlspecialchars(strip_tags($_POST['password'])) : false;
-    $notAuthorized = false;
+    session_start();
 
-    if (strtolower($userName) == 'guest' && strtolower($password) == 'password' ) {
+    if (!(isset($_SESSION['LOGGED_IN_USER']))) {
+        $_SESSION['LOGGED_IN_USER'] = false;
+    } elseif ($_SESSION['LOGGED_IN_USER']) {
         header("Location: authorized.php");
         die();
-    } elseif ($userName !== false && $password !== false) {
-        $notAuthorized[0] = "Klaatu Barada N... Necktie... Neckturn... Nickel...\n";
-        $notAuthorized[1] = "It's an \"N\" word, it's definitely an \"N\" word! \n";
-        $notAuthorized[2] = "Klaatu... Barada... N...[coughs]";
+    }
+
+    $userName = isset($_POST['user_name']) ? htmlspecialchars(strip_tags($_POST['user_name'])) : false;
+    $password = isset($_POST['password']) ? htmlspecialchars(strip_tags($_POST['password'])) : false;
+    $notAuthorizedMessage = false;
+
+    if(!empty($_POST)) {
+        if (strtolower($userName) == 'guest' && strtolower($password) == 'password' ) {
+            $_SESSION['LOGGED_IN_USER'] = true;
+            header("Location: authorized.php");
+            die();        
+        } else {
+            $notAuthorizedMessage[] = "Klaatu Barada N... Necktie... Neckturn... Nickel...\n";
+            $notAuthorizedMessage[] = "It's an \"N\" word, it's definitely an \"N\" word! \n";
+            $notAuthorizedMessage[] = "Klaatu... Barada... N...[coughs]";
+        }
     }
 
     return array(
             'userName' => $userName,
             'password' => $password,
-            'notAuthorized' => $notAuthorized
+            'notAuthorizedMessage' => $notAuthorizedMessage
         );
 }
 extract(pageController());
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,9 +92,9 @@ extract(pageController());
             </div>
         </div>
         <div class="container">
-            <?php if ($notAuthorized !== false) : ?>
+            <?php if ($notAuthorizedMessage !== false) : ?>
                 <div class="book">
-                    <?php foreach ($notAuthorized as $quote) :?>
+                    <?php foreach ($notAuthorizedMessage as $quote) :?>
                         <h2 class='no-login'><?= $quote ?></h2>
                     <?php endforeach; ?> 
             <?php endif; ?>
