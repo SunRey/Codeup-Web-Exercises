@@ -1,8 +1,8 @@
 <?php 
 function pageController () 
 {
-    $userName = isset($_POST['user_name']) ? $_POST['user_name'] : false;
-    $password = isset($_POST['password']) ? $_POST['password'] : false;
+    $userName = isset($_POST['user_name']) ? htmlspecialchars(strip_tags($_POST['user_name'])) : false;
+    $password = isset($_POST['password']) ? htmlspecialchars(strip_tags($_POST['password'])) : false;
     $notAuthorized = false;
 
     if (strtolower($userName) == 'guest' && strtolower($password) == 'password' ) {
@@ -52,12 +52,6 @@ extract(pageController());
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     </head>
     <body>
-        <!-- Button trigger modal -->
-        <div class="container">
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
-                Dare to login?
-            </button>
-        </div>
         <!-- Modal -->
         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="magicWords">
             <div class="modal-dialog" role="document">
@@ -83,14 +77,19 @@ extract(pageController());
                 </div>
             </div>
         </div>
-
-        <?php if ($notAuthorized !== false) : ?>
-            <div class="book container">
-                <?php foreach ($notAuthorized as $quote) :?>
-                    <h2 class='no-login'><?= $quote ?></h2>
-                <?php endforeach; ?>
-            </div> 
-        <?php endif; ?>
+        <div class="container">
+            <?php if ($notAuthorized !== false) : ?>
+                <div class="book">
+                    <?php foreach ($notAuthorized as $quote) :?>
+                        <h2 class='no-login'><?= $quote ?></h2>
+                    <?php endforeach; ?> 
+            <?php endif; ?>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">
+                Dare to login?
+            </button>
+                </div>
+        </div>
         <script>
             $('.modal').on('shown.bs.modal', function() {
                 $(this).find('[autofocus]').focus();
