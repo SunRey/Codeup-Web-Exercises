@@ -1,0 +1,9 @@
+2015-11-17 14:25:20 INFO: info message
+2015-11-17 15:04:55 INFO: info message
+2015-11-17 15:04:55 ERROR: error message
+2015-11-17 15:07:29 INFO: info message
+2015-11-17 15:07:29 ERROR: error message
+2015-11-17 15:07:29 WARNING: warning message
+2015-11-17 15:07:31 INFO: info message
+2015-11-17 15:07:31 ERROR: error message
+2015-11-17 15:07:31 WARNING: warning message
