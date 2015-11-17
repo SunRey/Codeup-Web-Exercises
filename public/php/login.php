@@ -1,18 +1,19 @@
 <?php 
+require_once('functions.php');
 
 function pageController () 
 {
     session_start();
 
-    if (!(isset($_SESSION['LOGGED_IN_USER']))) {
+    if (! isset($_SESSION['LOGGED_IN_USER'])) {
         $_SESSION['LOGGED_IN_USER'] = false;
     } elseif ($_SESSION['LOGGED_IN_USER']) {
         header("Location: authorized.php");
         die();
     }
 
-    $userName = isset($_POST['user_name']) ? htmlspecialchars(strip_tags($_POST['user_name'])) : false;
-    $password = isset($_POST['password']) ? htmlspecialchars(strip_tags($_POST['password'])) : false;
+    $userName = isset($_POST['user_name']) ? escape($_POST['user_name']) : false;
+    $password = isset($_POST['password']) ? escape($_POST['password']) : false;
     $notAuthorizedMessage = false;
 
     if(!empty($_POST)) {
