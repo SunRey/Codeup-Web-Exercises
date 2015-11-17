@@ -1,5 +1,6 @@
 <?php
 require_once('functions.php');
+session_start();
 
 function youGotServed ($served) 
 {
@@ -10,9 +11,9 @@ function youGotServed ($served)
 
 function pageController () 
 {
-    $hit = isset($_GET['hit']) ? $_GET['hit'] : false;
-    $miss = isset($_GET['miss']) ? $_GET['miss'] : false;
-    $served = isset($_GET['served']) ? $_GET['served'] : false;
+    $hit = inputHas('hit') ? inputGet('hit') : false;
+    $miss = inputHas('miss') ? inputGet('miss') : false;
+    $served = inputHas('served') ? inputGet('served') : false;
     $message = youGotServed($served);
     $counter = '';
 

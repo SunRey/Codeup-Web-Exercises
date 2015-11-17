@@ -12,8 +12,8 @@ function pageController ()
         die();
     }
 
-    $userName = isset($_POST['user_name']) ? escape($_POST['user_name']) : false;
-    $password = isset($_POST['password']) ? escape($_POST['password']) : false;
+    $userName = inputHas('user_name') ? escape(inputGet('user_name')) : false;
+    $password = inputHas('password') ? escape(inputGet('password')) : false;
     $notAuthorizedMessage = false;
 
     if(!empty($_POST)) {

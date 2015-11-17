@@ -2,12 +2,12 @@
 
 function inputHas($key) 
 {
-    return (isset($key)) ? true : false;
+    return (isset($_REQUEST[$key])) ? true : false;
 }
 
 function inputGet($key) 
 {
-    return (inputHas($key)) ? $key : false;
+    return (inputHas($key)) ? $_REQUEST[$key] : false;
 }
 
 function escape($input)
