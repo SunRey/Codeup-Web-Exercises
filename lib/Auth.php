@@ -1,5 +1,5 @@
 <?php
-require_once '../public/php/Log'
+require_once '../php/Log.php';
 
 class Auth
 {
