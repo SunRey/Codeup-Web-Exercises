@@ -5,13 +5,20 @@ class Log
     public $filename = '';
     public $handle;
 
+    public function __construct($prefix = 'log')
+    {
+        $this->filename = "{$prefix}-" . date("Y-m-d") . ".log";
+        $this->handle = fopen($this->filename, 'a');
+    }
+
+    public function __destruct()
+    {
+        fclose($this->handle);
+    }
+
     public function logMessage($logLevel, $message)
     {
-        $date_log = date("Y-m-d");
-        $this->filename = "log-{$date_log}.log";
-        $handle = fopen($this->filename, 'a');
-        fwrite($handle, $date_log . ' ' . date('H:i:s') . " {$logLevel}: {$message}\n");
-        fclose($handle);
+        fwrite($this->handle, date('Y-m-d H:i:s') . " {$logLevel}: {$message}\n");
     }
 
     public function logInfo ($message)

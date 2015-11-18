@@ -6,5 +6,5 @@ $log = new Log();
 
 $log->logInfo('info message');
 $log->logError('error message');
-$log->logMessage('WARNING', 'warning message');
+$log->logMessage('WARNING', 'this is working!');
 
