@@ -1,5 +1,6 @@
 <?php 
-require_once('functions.php');
+require_once 'functions.php';
+require_once '../lib/Input.php';
 
 function pageController () 
 {
@@ -12,8 +13,8 @@ function pageController ()
         die();
     }
 
-    $userName = inputHas('user_name') ? escape(inputGet('user_name')) : false;
-    $password = inputHas('password') ? escape(inputGet('password')) : false;
+    $userName = escape(Input::get('user_name'));
+    $password = escape(Input::get('password'));
     $notAuthorizedMessage = false;
 
     if(!empty($_POST)) {

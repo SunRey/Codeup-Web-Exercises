@@ -1,6 +1,6 @@
 <?php
 require_once 'functions.php';
-require_once '../../lib/Input.php';
+require_once '../lib/Input.php';
 session_start();
 
 function youGotServed ($served) 
