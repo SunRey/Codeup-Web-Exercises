@@ -41,3 +41,6 @@
 2015-11-17 22:39:27 INFO: info message
 2015-11-17 22:39:27 ERROR: error message
 2015-11-17 22:39:27 WARNING: this is working!
+2015-11-17 22:41:29 INFO: info message
+2015-11-17 22:41:29 ERROR: error message
+2015-11-17 22:41:29 WARNING: this is working!

@@ -2,7 +2,7 @@
 
 class Log
 {
-    public $filename = '';
+    public $filename;
     public $handle;
 
     public function __construct($prefix = 'log')
