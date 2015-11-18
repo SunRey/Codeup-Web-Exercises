@@ -1,5 +1,6 @@
 <?php
-require_once('functions.php');
+require_once 'functions.php';
+require_once '../../lib/Input.php';
 session_start();
 
 function youGotServed ($served) 
@@ -11,9 +12,9 @@ function youGotServed ($served)
 
 function pageController () 
 {
-    $hit = inputHas('hit') ? inputGet('hit') : false;
-    $miss = inputHas('miss') ? inputGet('miss') : false;
-    $served = inputHas('served') ? inputGet('served') : false;
+    $hit = Input::get('hit');
+    $miss = Input::get('miss');
+    $served = Input::get('served');
     $message = youGotServed($served);
     $counter = '';
 
