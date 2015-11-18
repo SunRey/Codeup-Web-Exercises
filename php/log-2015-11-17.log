@@ -1,0 +1,46 @@
+2015-11-17 14:25:20 INFO: info message
+2015-11-17 15:04:55 INFO: info message
+2015-11-17 15:04:55 ERROR: error message
+2015-11-17 15:07:29 INFO: info message
+2015-11-17 15:07:29 ERROR: error message
+2015-11-17 15:07:29 WARNING: warning message
+2015-11-17 15:07:31 INFO: info message
+2015-11-17 15:07:31 ERROR: error message
+2015-11-17 15:07:31 WARNING: warning message
+2015-11-17 21:51:46 INFO: info message
+2015-11-17 21:51:46 ERROR: error message
+2015-11-17 21:51:46 WARNING: warning message
+2015-11-17 22:08:07 INFO: info message
+2015-11-17 22:08:07 ERROR: error message
+2015-11-17 22:08:07 WARNING: warning message
+2015-11-17 22:09:19 INFO: info message
+2015-11-17 22:09:19 ERROR: error message
+2015-11-17 22:09:19 WARNING: warning message
+2015-11-17 22:18:02 INFO: info message
+2015-11-17 22:18:02 ERROR: error message
+2015-11-17 22:18:02 WARNING: Danger Will Robinson
+2015-11-17 22:20:49 INFO: info message
+2015-11-17 22:21:30 INFO: info message
+2015-11-17 22:24:52 INFO: info message
+2015-11-17 22:25:24 INFO: info message
+2015-11-17 22:27:22 INFO: info message
+2015-11-17 22:28:23 INFO: info message
+2015-11-17 22:29:33 INFO: info message
+2015-11-17 22:30:15 INFO: info message
+2015-11-17 22:31:50 INFO: info message
+2015-11-17 22:33:52 INFO: info message
+2015-11-17 22:33:52 ERROR: error message
+2015-11-17 22:33:52 WARNING: another warning test
+2015-11-17 22:34:56 INFO: info message
+2015-11-17 22:34:56 ERROR: error message
+2015-11-17 22:34:56 WARNING: another warning test
+2015-11-17 22:36:38 INFO: info message
+2015-11-17 22:36:38 ERROR: error message
+2015-11-17 22:36:38 WARNING: another warning test
+2015-11-17 22:37:14 INFO: info message
+2015-11-17 22:39:27 INFO: info message
+2015-11-17 22:39:27 ERROR: error message
+2015-11-17 22:39:27 WARNING: this is working!
+2015-11-17 22:41:29 INFO: info message
+2015-11-17 22:41:29 ERROR: error message
+2015-11-17 22:41:29 WARNING: this is working!
