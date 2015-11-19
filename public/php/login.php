@@ -1,42 +1,50 @@
 <?php 
 require_once 'functions.php';
-require_once '../lib/Input.php';
+require_once '../../lib/Input.php';
+require_once '../../lib/Auth.php';
+require_once '../../lib/Log.php';
 
 function pageController () 
 {
     session_start();
+    $notAuthorizedMessage = false; 
+    // $session = session_id();
 
-    if (! isset($_SESSION['LOGGED_IN_USER'])) {
-        $_SESSION['LOGGED_IN_USER'] = false;
-    } elseif ($_SESSION['LOGGED_IN_USER']) {
+    if (Auth::check()) {
         header("Location: authorized.php");
         die();
     }
 
-    $userName = escape(Input::get('user_name'));
-    $password = escape(Input::get('password'));
-    $notAuthorizedMessage = false;
+        $userName = Input::get('username');
+        $password = Input::get('password');
 
     if(!empty($_POST)) {
-        if (strtolower($userName) == 'guest' && strtolower($password) == 'password' ) {
-            $_SESSION['LOGGED_IN_USER'] = true;
+        
+
+        $log = new Log();
+
+        if (Auth::attempt($userName, $password)) {
+            $log->logInfo("User {$userName} logged in.");
             header("Location: authorized.php");
             die();        
         } else {
+            $log->logError("User {$userName} failed to logged in.");
             $notAuthorizedMessage[] = "Klaatu Barada N... Necktie... Neckturn... Nickel...\n";
             $notAuthorizedMessage[] = "It's an \"N\" word, it's definitely an \"N\" word! \n";
             $notAuthorizedMessage[] = "Klaatu... Barada... N...[coughs]";
         }
     }
-
-    return array(
-            'userName' => $userName,
+  
+        return array(
+            'username' => $userName,
             'password' => $password,
             'notAuthorizedMessage' => $notAuthorizedMessage
         );
+
+
 }
 extract(pageController());
-
+var_dump($_POST);
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,7 +88,7 @@ extract(pageController());
                         <form method="POST">
                             <div class="form-group">
                                 <label for="username-input">Username</label>
-                                <input name='user_name' type="text" class="form-control" id="username-input" placeholder="Username" autofocus>
+                                <input name='username' type="text" class="form-control" id="username-input" placeholder="Username" autofocus>
                             </div>
                             <div class="form-group">
                                 <label for="password-input">Password</label>

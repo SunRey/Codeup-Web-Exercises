@@ -1,7 +1,7 @@
 <?php
     require_once('functions.php');
     session_start();
-    if (! isset($_SESSION['LOGGED_IN_USER']) || $_SESSION['LOGGED_IN_USER'] === false) {
+    if (! inputHas('LOGGED_IN_USER') || $_SESSION['LOGGED_IN_USER'] === false) {
         header("Location: login.php");
         die();
     }
