@@ -4,6 +4,7 @@
     if (! inputHas('LOGGED_IN_USER') || $_SESSION['LOGGED_IN_USER'] === false) {
         header("Location: login.php");
         die();
+        
     }
 ?>
 <!DOCTYPE html>
