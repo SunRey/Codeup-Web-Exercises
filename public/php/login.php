@@ -7,20 +7,17 @@ require_once '../../lib/Log.php';
 function pageController () 
 {
     session_start();
-    $notAuthorizedMessage = false; 
-    // $session = session_id();
+    $unauthorizedMessage = '';
+    $isAuthorized = false;
+    $session = session_id();
 
-    if (Auth::check()) {
+    if (Auth::checkSession($session)) {
         header("Location: authorized.php");
         die();
-    }
+    } elseif (!empty($_POST)){
 
         $userName = Input::get('username');
-        $password = Input::get('password');
-
-    if(!empty($_POST)) {
-        
-
+        $password = Input::get('password');       
         $log = new Log();
 
         if (Auth::attempt($userName, $password)) {
@@ -29,16 +26,17 @@ function pageController ()
             die();        
         } else {
             $log->logError("User {$userName} failed to logged in.");
-            $notAuthorizedMessage[] = "Klaatu Barada N... Necktie... Neckturn... Nickel...\n";
-            $notAuthorizedMessage[] = "It's an \"N\" word, it's definitely an \"N\" word! \n";
-            $notAuthorizedMessage[] = "Klaatu... Barada... N...[coughs]";
+            $unauthorizedMessage[] = "You have failed to login correctly\n";
+            $unauthorizedMessage[] = "The combination of username and password were incorrect";
+            $unauthorizedMessage[] = "Pleas use corret login info or re-enter to make correct";
         }
     }
+
   
         return array(
             'username' => $userName,
             'password' => $password,
-            'notAuthorizedMessage' => $notAuthorizedMessage
+            'unauthorizedMessage' => $unauthorizedMessage
         );
 
 
@@ -55,11 +53,6 @@ var_dump($_POST);
         <title></title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <style>
-            .book {
-                background: url('/img/aod-book.png');
-                background-repeat: no-repeat;
-                min-height: 688px;
-            }
             .no-login {
                 color: white;
             }
@@ -101,11 +94,12 @@ var_dump($_POST);
                 </div>
             </div>
         </div>
-        <div class="container">
-            <?php if ($notAuthorizedMessage !== false) : ?>
-                <div class="book">
-                    <?php foreach ($notAuthorizedMessage as $quote) :?>
-                        <h2 class='no-login'><?= $quote ?></h2>
+        <div class="container well">
+            <?php if (!empty($unauthorizedMessage)) : ?>
+                <div class="not_auth">
+                    <h1>Attention <?= $userName ?> </h1>
+                    <?php foreach ($unauthorizedMessage as $messageline) :?>
+                        <h2 class='no-login'><?= $messageline ?></h2>
                     <?php endforeach; ?> 
             <?php endif; ?>
             <!-- Button trigger modal -->

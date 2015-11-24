@@ -7,17 +7,15 @@ class Auth
 
     public static function attempt($username, $password)
     {
-        if($username == 'guest' && password_verify($password, self::$password)) {
-            $_SESSION['LOGGED_IN_USER'] = true;
+        if($username == 'guest' && password_verify($password, static::$password)) {
             return true; 
         } else {
             return false;
         }
-    }
 
-    public static function check()
+    public static function checkSession($id)
     {
-        return Input::has('LOGGED_IN_USER');
+        return ($id == $_REQUEST['sessionId']) ? true : false;
     }
 
     public static function user()
