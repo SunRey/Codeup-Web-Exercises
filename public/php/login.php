@@ -8,6 +8,8 @@ function pageController ()
 {
     session_start();
     $unauthorizedMessage = '';
+    $userName = '';
+    $password = '';
     $isAuthorized = false;
     $session = session_id();
 
@@ -21,13 +23,17 @@ function pageController ()
         $log = new Log();
 
         if (Auth::attempt($userName, $password)) {
-            $log->logInfo("User {$userName} logged in.");
+            $_REQUEST['sessionId'] = $session;
+            $_REQUEST['username'] = $userName;
+            $_REQUEST['password'] = $password;
+            $log->logInfo("User {$userName} logged in with id: {$session}\n");
             header("Location: authorized.php");
             die();        
         } else {
-            $log->logError("User {$userName} failed to logged in.");
+            $userName = escape($userName);
+            $log->logError("User {$userName} failed to logged in with id: {$session}");
             $unauthorizedMessage[] = "You have failed to login correctly\n";
-            $unauthorizedMessage[] = "The combination of username and password were incorrect";
+            $unauthorizedMessage[] = "The combination of username and password used are incorrect";
             $unauthorizedMessage[] = "Pleas use corret login info or re-enter to make correct";
         }
     }
@@ -36,13 +42,15 @@ function pageController ()
         return array(
             'username' => $userName,
             'password' => $password,
+            'session' => $session,
             'unauthorizedMessage' => $unauthorizedMessage
         );
 
 
 }
 extract(pageController());
-var_dump($_POST);
+var_dump($_REQUEST);
+var_dump($session);
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,7 +62,7 @@ var_dump($_POST);
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <style>
             .no-login {
-                color: white;
+                color: black;
             }
             .form-control:focus {
                 border-color:#ccc;
@@ -97,7 +105,7 @@ var_dump($_POST);
         <div class="container well">
             <?php if (!empty($unauthorizedMessage)) : ?>
                 <div class="not_auth">
-                    <h1>Attention <?= $userName ?> </h1>
+                    <h1>Attention "<?= $username ?>" </h1>
                     <?php foreach ($unauthorizedMessage as $messageline) :?>
                         <h2 class='no-login'><?= $messageline ?></h2>
                     <?php endforeach; ?> 

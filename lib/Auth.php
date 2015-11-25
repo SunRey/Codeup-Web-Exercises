@@ -12,10 +12,13 @@ class Auth
         } else {
             return false;
         }
+    }
 
     public static function checkSession($id)
     {
-        return ($id == $_REQUEST['sessionId']) ? true : false;
+        if (Input::has('sessionId')) {
+            return ($id == $_REQUEST['sessionId']) ? true : false;
+        }
     }
 
     public static function user()

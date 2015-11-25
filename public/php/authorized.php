@@ -1,11 +1,17 @@
 <?php
-    require_once('functions.php');
+    require_once '../../lib/Input.php';
+    require_once '../../lib/Auth.php';
+
     session_start();
-    if (! inputHas('LOGGED_IN_USER') || $_SESSION['LOGGED_IN_USER'] === false) {
-        header("Location: login.php");
+    $session = session_id();
+
+    if (Auth::checkSession('$session')) {
+        // header("Location: login.php");
         die();
     }
-    
+
+    var_dump($_REQUEST);
+    var_dump($session);
 ?>
 <!DOCTYPE html>
 <html>
