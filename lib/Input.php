@@ -11,7 +11,7 @@ class Input
     public static function has($key)
     {
         // TODO: Fill in this function
-        return (isset($_REQUEST[$key])) ? true : false;
+        return (isset($_REQUEST[$key]));
     }
 
     /**
@@ -21,11 +21,19 @@ class Input
      * @param mixed $default default value to return if key not found
      * @return mixed value passed in request
      */
-    public static function get($key, $default = '')
+    public static function get($key, $default = NULL)
     {
-        // TODO: Fill in this function
         return (self::has($key)) ? $_REQUEST[$key] : $default;
+    }
 
+    /**
+     *sanitize string and return it
+     * @param string to be sanitized
+     * @return sanitized string (no special chars or tags)
+     */
+    public static function escape($string)
+    {
+        return htmlspecialchars(strip_tags($string));
     }
 
     ///////////////////////////////////////////////////////////////////////////

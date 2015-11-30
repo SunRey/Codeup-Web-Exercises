@@ -1,24 +1,46 @@
 <?php
 require_once 'Input.php';
+require 'Log.php';
 
 class Auth
 {
     public static $password = '$2y$10$SLjwBwdOVvnMgWxvTI4Gb.YVcmDlPTpQystHMO2Kfyi/DS8rgA0Fm';
+    public static $defaultUser = 'guest';
 
-    public static function attempt($username, $password)
+    public static function attempt($username, $password, $session)
     {
-        if($username == 'guest' && password_verify($password, static::$password)) {
+        $log = new Log();
+
+        $passwordIsValid = password_verify($password, self::$password);
+        $usernameIsValid = ($username == self::$defaultUser);
+
+        if($passwordIsValid && $usernameIsValid) {
+            $_SESSION['VALID_USER'] = $username;
+            $log->logInfo("User {$username} logged in with session-id: {$session}\n");
             return true; 
-        } else {
+        } elseif ($username != '') {
             return false;
         }
     }
 
-    public static function checkSession($id)
+    public static function checkUser()
     {
-        if (Input::has('sessionId')) {
-            return ($id == $_REQUEST['sessionId']) ? true : false;
-        }
+        (Input::has('VALID_USER')) ? true : false;
+    }
+
+    public static function authorizedCheck()
+    {
+        isset($_SESSION['VALID_USER']);
+    }
+
+    /**
+    *Redirect function to url
+    * @param url to be redirected to
+    */
+    public static function redirect($url)
+    {
+        header("Location: {$url}");
+        die();
     }
 
     public static function user()

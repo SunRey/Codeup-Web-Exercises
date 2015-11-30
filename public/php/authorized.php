@@ -5,8 +5,8 @@
     session_start();
     $session = session_id();
 
-    if (Auth::checkSession('$session')) {
-        // header("Location: login.php");
+    if (!Auth::authorizedCheck()) {
+        header("Location: login.php");
         die();
     }
 

@@ -3,32 +3,27 @@ require_once 'functions.php';
 require_once '../../lib/Input.php';
 require_once '../../lib/Auth.php';
 require_once '../../lib/Log.php';
+date_default_timezone_set('America/Chicago');
 
 function pageController () 
 {
-    session_start();
+
     $unauthorizedMessage = '';
-    $userName = '';
-    $password = '';
-    $isAuthorized = false;
+    $userName = Input::get('username', '');
+    $password = Input::get('password', '');
     $session = session_id();
 
-    if (Auth::checkSession($session)) {
+
+
+    if (Auth::checkUser()) {
         header("Location: authorized.php");
         die();
     } elseif (!empty($_POST)){
-
-        $userName = Input::get('username');
-        $password = Input::get('password');       
+       
         $log = new Log();
 
-        if (Auth::attempt($userName, $password)) {
-            $_REQUEST['sessionId'] = $session;
-            $_REQUEST['username'] = $userName;
-            $_REQUEST['password'] = $password;
-            $log->logInfo("User {$userName} logged in with id: {$session}\n");
-            header("Location: authorized.php");
-            die();        
+        if (Auth::attempt($userName, $password, $session)) {
+            Auth::redirect('authorized.php');        
         } else {
             $userName = escape($userName);
             $log->logError("User {$userName} failed to logged in with id: {$session}");
@@ -39,18 +34,20 @@ function pageController ()
     }
 
   
-        return array(
-            'username' => $userName,
-            'password' => $password,
-            'session' => $session,
-            'unauthorizedMessage' => $unauthorizedMessage
-        );
+    return array(
+        'username' => $userName,
+        'password' => $password,
+        'session' => $session,
+        'unauthorizedMessage' => $unauthorizedMessage
+    );
 
 
 }
+
+session_start();
 extract(pageController());
 var_dump($_REQUEST);
-var_dump($session);
+var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
