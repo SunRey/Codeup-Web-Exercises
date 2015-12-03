@@ -10,16 +10,20 @@ function pageController($dbc)
     $page = (Input::has('page')) ? Input::get('page') : 1;
     $nextPage = $page + 1;
     $perviousPage = $page - 1;
+    $offset = $limit * $page - $limit;
 
-    $selectAll = 'SELECT * FROM national_parks LIMIT ' . $limit . ' OFFSET ' . ($limit * $page - $limit) . ';';
-    $rowCount = 'SELECT COUNT(*) FROM national_parks;';
+    $stmt = $dbc->prepare('SELECT * FROM national_parks LIMIT :limit OFFSET :offset');
 
-    $count = $dbc->query($rowCount)->fetchColumn();
-    $pageLimiter = ceil($count / $limit);
 
-    $stmt = $dbc->query($selectAll);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    
     $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    $rowCount = 'SELECT COUNT(*) FROM national_parks;';
+    $count = $dbc->query($rowCount)->fetchColumn();
+    $pageLimiter = ceil($count / $limit);
 
     return array(
         'stmt' => $stmt,
