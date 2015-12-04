@@ -2,6 +2,12 @@
 
 class Input
 {
+    public static function notEmpty($key) 
+    {
+        if (isset($_REQUEST[$key]) && $_REQUEST[$key] != '') {
+            return true;
+        }
+    }
     /**
      * Check if a given value was passed in the request
      *
