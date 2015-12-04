@@ -5,6 +5,6 @@
     {
         public function getPerimeter()
         {
-            return ($this->height * 2) + ($this->width * 2) . PHP_EOL;
+            return $this->height * 4 . PHP_EOL;
         }
     }
