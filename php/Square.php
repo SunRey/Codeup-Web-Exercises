@@ -3,8 +3,9 @@
 
     class Square extends Rectangle
     {
-        public function getPerimeter()
+        public function __construct($height)
         {
-            return $this->height * 4 . PHP_EOL;
+            parent::__construct($height, $height);
         }
+
     }
