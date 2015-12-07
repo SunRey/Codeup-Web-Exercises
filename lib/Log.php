@@ -2,13 +2,25 @@
 
 class Log
 {
-    private $filename;
-    private $handle;
+    protected $filename;
+    protected $handle;
 
     public function __construct($prefix = 'log')
     {
+        $this->setFileName($prefix);
+        $$this->setHandle();
+    }
+
+    protected function setFileName($prefix)
+    {
         $this->filename = "../data/{$prefix}-" . date("Y-m-d") . ".log";
-        $this->handle = fopen($this->filename, 'a');
+        settype($this->filename, 'string');
+        
+    }
+
+    protected function setHandle()
+    {
+        $this->handle = fopen($this->filename, 'a+');
     }
 
     public function logMessage($logLevel, $message)
