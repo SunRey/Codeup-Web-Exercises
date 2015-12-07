@@ -4,7 +4,7 @@ class Model
 {
     protected static $table;
     
-    private attributes = [];
+    private $attributes = [];
 
     public function __set($name, $value)
     {
@@ -15,4 +15,9 @@ class Model
     {
         return (array_key_exists($name, $this-attributes)) ? $this->attributes[$name] : NULL;
     }
-}g
+
+    public static function getTableName()
+    {
+        return self::$table;
+    }
+}
