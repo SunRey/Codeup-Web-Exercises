@@ -5,18 +5,21 @@ require '../lib/Input.php';
 
 function pageController($dbc)
 {
-
-    if(Input::notEmpty('name') && Input::notEmpty('parkURL') && Input::notEmpty('location') && Input::notEmpty('date_established') && Input::notEmpty('area_in_acres') && Input::notEmpty('description')) {
-        $newPark = $dbc->prepare('INSERT INTO national_parks (name, parkURL, location, date_established, area_in_acres, description) VALUES(:name, :parkURL, :location, :date_established, :area_in_acres, :description);');
-        $newPark->bindValue(':name', Input::get('name'), PDO::PARAM_STR);
-        $newPark->bindValue(':parkURL', Input::get('parkURL'), PDO::PARAM_STR);
-        $newPark->bindValue(':location', Input::get('location'), PDO::PARAM_STR);
-        $newPark->bindValue(':date_established', Input::get('date_established'), PDO::PARAM_STR);
-        $newPark->bindValue(':area_in_acres', Input::get('area_in_acres'), PDO::PARAM_STR);
-        $newPark->bindValue(':description', Input::get('description'), PDO::PARAM_STR);
-        $newPark->execute();
-    } else {
-        $topDisplay = 'Please enter ALL information correctly';
+    $topDisplay = 'Add a new park to the list. Please complete all information accurately.';
+    
+    if(!empty($_POST)) {
+        if(Input::notEmpty('name') && Input::notEmpty('parkURL') && Input::notEmpty('location') && Input::notEmpty('date_established') && Input::notEmpty('area_in_acres') && Input::notEmpty('description')) {
+            $newPark = $dbc->prepare('INSERT INTO national_parks (name, parkURL, location, date_established, area_in_acres, description) VALUES(:name, :parkURL, :location, :date_established, :area_in_acres, :description);');
+            $newPark->bindValue(':name', Input::get('name'), PDO::PARAM_STR);
+            $newPark->bindValue(':parkURL', Input::get('parkURL'), PDO::PARAM_STR);
+            $newPark->bindValue(':location', Input::get('location'), PDO::PARAM_STR);
+            $newPark->bindValue(':date_established', Input::get('date_established'), PDO::PARAM_STR);
+            $newPark->bindValue(':area_in_acres', Input::get('area_in_acres'), PDO::PARAM_STR);
+            $newPark->bindValue(':description', Input::get('description'), PDO::PARAM_STR);
+            $newPark->execute();
+        } else {
+            $topDisplay = 'Please enter ALL information correctly';
+        }
     }
 
     if(Input::notEmpty('id')) {
@@ -46,6 +49,7 @@ function pageController($dbc)
 
 
     return array(
+        'topDisplay' => $topDisplay,
         'stmt' => $stmt,
         'nextPage' => $nextPage,
         'previousPage' => $previousPage,
@@ -159,6 +163,7 @@ $i = 1;
         </nav>
 
         <div class="well">
+            <h3><?= $topDisplay ?></h3>
             <form method='POST' role='form'>
                 <div class="form-group">
                     <label for="name">New Park</label>
